@@ -60,7 +60,7 @@ const verifyOTP = async (req: Request, res: Response) => {
     try {
       const { email, otp } = req.body;
   
-      if ({/* OTP matches */}) {
+      if ({/*OTP matches*/}) {
         res.status(200).json({ message: 'OTP verified successfully' });
       } else {
         res.status(400).json({ message: 'Invalid OTP' });
