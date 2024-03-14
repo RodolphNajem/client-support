@@ -3,7 +3,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 export interface IComplaint extends Document {
   title: string;
   body: string;
-  categories: string[]; // Assuming category IDs or names are stored as strings
+  categories: string[];
   status: 'PENDING' | 'INPROGRESS' | 'RESOLVED' | 'REJECTED';
 }
 
