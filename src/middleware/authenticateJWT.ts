@@ -15,7 +15,7 @@ const authenticateJWT = (req: Request, res: Response, next: NextFunction) => {
         return res.status(404).json({ message: 'User not found' });
       }
       // Attach the user ID to the request object
-      req.userId = decoded.userId;
+      (req as any).userId = decoded.userId;
       next();
     });
   } else {

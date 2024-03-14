@@ -132,7 +132,7 @@ const getClientComplaintCategoryDetails = async (req: Request, res: Response) =>
   try {
     const { id } = req.params;
     const { status } = req.body;
-
+    const io = req.app.get('io');
     // Find the complaint by its ID and update its status
     const updatedComplaint = await ComplaintCategory.findByIdAndUpdate(id, { status }, { new: true });
 
@@ -140,6 +140,7 @@ const getClientComplaintCategoryDetails = async (req: Request, res: Response) =>
       return res.status(404).json({ message: 'Complaint not found' });
     }
 // event to notify the concerned user
+
   io.emit('complaintStatusUpdated', {complaintId: id, newStatus: status});
 
     res.status(200).json({ message: 'Complaint status updated successfully', complaint: updatedComplaint });

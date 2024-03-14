@@ -1,6 +1,6 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
 import http from 'http';
-import socketIo, { Socket } from 'socket.io';
+import { Server } from 'socket.io';
 import mongoose from 'mongoose';
 import authRoutes from './routes/auth';
 import complaintRoutes from './routes/complaint';
@@ -11,7 +11,7 @@ import bodyParser from 'body-parser';
 
 const app : Application = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = new Server(server);
 
 //initialize socket.io connections
 
